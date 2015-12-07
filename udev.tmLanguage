@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>fileTypes</key>
+  <array>
+    <string>rules</string>
+  </array>
+
+  <key>name</key>
+  <string>udev rules</string>
+
+  <key>scopeName</key>
+  <string>source.udev</string>
+
+<!-- https://docs.oracle.com/cd/E37670_01/E41138/html/ch07s03.html -->
+<!-- http://www.reactivated.net/writing_udev_rules.html -->
+<!-- http://www.freedesktop.org/software/systemd/man/udev.html -->
+
+  <key>patterns</key>
+  <array>
+    <dict>
+      <key>comment</key>
+      <string>Comments | anything after a #</string>
+      <key>name</key>
+      <string>comment.line.udev</string>
+      <key>match</key>
+      <string>#.*$</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>match keys</string>
+      <key>match</key>
+      <string>ACTION|ATTRS?|DEVPATH|DRIVERS?|ENV|GROUP|IMPORT|KERNELS?|MODE|NAME|OPTIONS|OWNER|PROGRAM|RESULT|RUN|SUBSYSTEMS?|SYMLINK|TEST</string>
+      <key>name</key>
+      <string>support.variable.tag.udev</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>key</string>
+      <key>match</key>
+      <string>[A-Z]+</string>
+      <key>name</key>
+      <string>variable.keyword.udev</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>property</string>
+      <key>match</key>
+      <string>\{[a-zA-Z0-9-_]+\}</string>
+      <key>name</key>
+      <string>variable.parameter.udev</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>value</string>
+      <key>begin</key>
+      <string>\"</string>
+      <key>beginCaptures</key>
+      <dict>
+        <key>0</key>
+        <dict><key>name</key><string>punctuation.definition.string.begin.udev</string></dict>
+      </dict>
+      <key>end</key>
+      <string>\"</string>
+      <key>endCaptures</key>
+      <dict>
+        <key>0</key>
+        <dict><key>name</key><string>punctuation.definition.string.begin.udev</string></dict>
+      </dict>
+      <key>name</key>
+      <string>string.quoted.double.udev</string>
+
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>comment</key>
+          <string>string substitutions</string>
+          <key>match</key>
+          <string>(\$attr|\$env)\{([a-zA-Z-_]+)\}</string>
+          <key>captures</key>
+          <dict>
+            <key>1</key>
+            <dict>
+              <key>name</key>
+              <string>variable.language.udev</string>
+            </dict>
+            <key>2</key>
+            <dict>
+              <key>name</key>
+              <string>variable.parameter.udev</string>
+            </dict>
+          </dict>
+          <key>name</key>
+          <string>variable.language.udev</string>
+        </dict>
+
+        <dict>
+          <key>comment</key>
+          <string>string substitutions</string>
+          <key>match</key>
+          <string>\$(devpath|kernel|major|minor|name)</string>
+          <key>name</key>
+          <string>variable.language.udev</string>
+        </dict>
+      </array>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>match</string>
+      <key>match</key>
+      <string>\=\=</string>
+      <key>name</key>
+      <string>keyword.operator.udev</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>negative match</string>
+      <key>match</key>
+      <string>\!\=</string>
+      <key>name</key>
+      <string>keyword.operator.udev</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>append</string>
+      <key>match</key>
+      <string>\+\=</string>
+      <key>name</key>
+      <string>keyword.operator.udev</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>assign</string>
+      <key>match</key>
+      <string>\=</string>
+      <key>name</key>
+      <string>keyword.operator.udev</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>assign unchangeble value</string>
+      <key>match</key>
+      <string>\:\=</string>
+      <key>name</key>
+      <string>keyword.operator.udev</string>
+    </dict>
+
+    <dict>
+      <key>comment</key>
+      <string>comma</string>
+      <key>match</key>
+      <string>\,</string>
+      <key>name</key>
+      <string>keyword.operator.udev</string>
+    </dict>
+  </array>
+
+  <key>uuid</key>
+  <string>56b6d00f-8310-48d3-98bb-bbd7673e9466</string>
+</dict>
+</plist>
