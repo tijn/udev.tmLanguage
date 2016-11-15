@@ -4,6 +4,6 @@ Syntax highlighting for udev rules.
 
 ## Installation
 
-Install via [Package Control](https://packagecontrol.io/).
+Install via [Package Control](https://packagecontrol.io/packages/udev%20rules).
 
-(But not yet, just copy the whole thing to a directory in ~/.config/sublime-text-3/Packages for now.)
+(or copy the whole thing into a directory in ~/.config/sublime-text-3/Packages)
